@@ -1,13 +1,13 @@
 import "./App.css";
 import app from "./firebase/firebase.init";
 
-import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+import { getAuth } from "firebase/auth";
 
-import ReactBootstrapRegisterForm from "./components/RegisterForm/ReactBootstrapRegisterForm";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import Root from "./Layout/Root";
 import LogIn from "./components/LogInForm/LogIn";
+import ReactBootstrapRegisterForm from "./components/RegisterForm/ReactBootstrapRegisterForm";
 import SignUpForm from "./components/SignUpForm/SignUpForm";
+import Root from "./Layout/Root";
 
 const auth = getAuth(app);
 
@@ -48,7 +48,7 @@ function App() {
         },
         {
           path: "login",
-          element: <ReactBootstrapRegisterForm></ReactBootstrapRegisterForm>,
+          element: <LogIn></LogIn>,
         },
         { path: "signup", element: <SignUpForm></SignUpForm> },
       ],

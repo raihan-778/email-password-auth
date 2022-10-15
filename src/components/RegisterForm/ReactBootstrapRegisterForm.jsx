@@ -1,4 +1,8 @@
-import { createUserWithEmailAndPassword, getAuth } from "firebase/auth";
+import {
+  createUserWithEmailAndPassword,
+  getAuth,
+  sendEmailVerification,
+} from "firebase/auth";
 import React, { useState } from "react";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
@@ -39,6 +43,7 @@ const ReactBootstrapRegisterForm = () => {
         console.log(user);
         setSuccess(true);
         form.reset();
+        verifyEmail();
       })
       .catch((error) => {
         console.error("error:", error);
@@ -46,8 +51,14 @@ const ReactBootstrapRegisterForm = () => {
       });
   };
 
+  const verifyEmail = () => {
+    sendEmailVerification(auth.currentUser).then(() => {
+      alert("Please verify your email !! ");
+    });
+  };
+
   return (
-    <div>
+    <div className="w-50 mx-auto">
       <Form onSubmit={handleRegister}>
         <h2 className="text-primary">Pleaset Register !!!</h2>
         <Form.Group className="mb-3" controlId="formBasicEmail">
@@ -78,7 +89,7 @@ const ReactBootstrapRegisterForm = () => {
       </Form>
       <p>
         <small>
-          Don't have an account?? Plese <Link to="/signup">Sign Up</Link>
+          Already Have an account?? Plese <Link to="/login">Log In</Link>
         </small>
       </p>
     </div>

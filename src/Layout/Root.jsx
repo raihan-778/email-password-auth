@@ -4,7 +4,7 @@ import { Link, Outlet } from "react-router-dom";
 const Root = () => {
   return (
     <div>
-      <nav>
+      <nav className="mx-auto">
         <Link to="/signup">Sign Up</Link>
         <Link to="/login">Log In</Link>
       </nav>
